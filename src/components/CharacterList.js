@@ -11,9 +11,18 @@ import SearchForm from "./SearchForm"
 const StyledWrapper = styled.section`
   display:grid;
   grid-template-columns:repeat(4,1fr);
+  grid-gap:30px;
   grid-template-areas:
-  "... search search ..."
-  "card card card card"
+  "search search search search"
+  
+`;
+const StyledCard = styled.div`
+  box-shadow: -3px -3px 6px rgba(255,255,255,1),2px 2px 6px rgba(0,0,0,.2);
+  color:rgba(200,100,113,.7);
+  margin:10% 0;
+  font-size:.8rem;
+  padding:0 1%;
+  text-align:center;
 `;
 
 export default function CharacterList() {
@@ -38,9 +47,9 @@ export default function CharacterList() {
       <SearchForm searching={searching} characters={characters}/>
       {characters.map(character =>{
         return(
-        <div className="character__card">
+        <StyledCard className="character__card">
           <h2>{character.name}</h2>
-        </div>
+        </StyledCard>
         )
       })}
     </StyledWrapper>
