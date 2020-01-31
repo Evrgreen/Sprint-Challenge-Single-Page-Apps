@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
+import {Link,Route,useRouteMatch,useParams} from "react-router-dom"
 import axios from "axios";
 import styled from "styled-components";
 import dummyData from "./Data"
 import SearchForm from "./SearchForm"
+import CharacterCard from "./CharacterCard"
 
 
 
@@ -43,16 +45,21 @@ export default function CharacterList() {
     setCharacters(props);
   }
 
+
   return (
     <StyledWrapper className="character-list">
       <SearchForm searching={searching} characters={characters}/>
-      {characters.map(character =>{
-        return(
+      {characters.map(character =>(
+        <Link to={`/characters/${character.id}`}>
         <StyledCard className="character__card">
           <h2>{character.name}</h2>
         </StyledCard>
+        </Link>
         )
-      })}
+        )}
+        <Route path="/characters/:characterID">
+          <CharacterCard characters={characters}/>
+        </Route>
     </StyledWrapper>
   );
 }

@@ -1,5 +1,7 @@
-import React from "react";
+import React, {useState} from "react";
+import {useParams,useRouteMatch} from "react-router-dom";
 
-export default function CharacterCard() {
-  return <span>todo: character</span>;
+
+export default function CharacterCard(props) {
+return(null)
 }
