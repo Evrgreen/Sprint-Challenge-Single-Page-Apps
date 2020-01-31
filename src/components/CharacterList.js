@@ -26,18 +26,19 @@ const StyledCard = styled.div`
 `;
 
 export default function CharacterList() {
-  const [characters,setCharacters] = useState(dummyData.data);
+  const [characters,setCharacters] = useState([]);
 
-
-  // useEffect(() => {
-  //   axios.get(`https://rickandmortyapi.com/api/character/`)
-  //   .then(response =>{
-  //     console.log(response);
-  //   })
-  //   .catch(error =>{
-  //     console.log(error)
-  //   })
-  // }, []);
+  console.log(characters)
+  useEffect(() => {
+    axios.get(`https://rickandmortyapi.com/api/character/`)
+    .then(response =>{
+      console.log(response.data);
+      setCharacters(response.data.results)
+    })
+    .catch(error =>{
+      console.log(error)
+    })
+  }, []);
   const searching = (props) =>{
     setCharacters(props);
   }

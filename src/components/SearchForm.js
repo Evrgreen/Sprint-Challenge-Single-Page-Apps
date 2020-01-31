@@ -12,10 +12,10 @@ display:flex;
 flex-direction:column;
 text-align:center;
  & label{
-   
+   margin-top:1%;
    font-size:1.5rem;
    font-weight:800;
-   color:white;
+   color:RGB(230, 131, 116);
  }
  & input{
    width:50%;
@@ -31,8 +31,10 @@ text-align:center;
 
 export default function SearchForm(props) {
   const [query,setQuery] = useState("")
-  const [initialValue] = useState(props.characters)
-
+  const [initialValue,setInitialValue] = useState([])
+  if(props.characters.length>initialValue.length){
+    setInitialValue(props.characters)
+  }
 
   const changeHandler = (event => {
     event.preventDefault();
@@ -40,10 +42,13 @@ export default function SearchForm(props) {
     console.log(query);
   })
   useEffect(() =>{
+      console.log("im the initial", initialValue, "and i, props", props.characters)
+      if(initialValue){
       const filteredCharacters = initialValue.filter(character => {
         return character.name.toLowerCase().includes(query.toLowerCase());
       })
     props.searching(filteredCharacters);
+      }
   },[query])
 
   console.log(query)

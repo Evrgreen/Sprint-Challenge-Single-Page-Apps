@@ -9,7 +9,6 @@ export default function App() {
   return (
     <main>
       <Header />
-      <Link to=""></Link>
       <Switch>
         <Route path="/characters" component={CharacterList}/>
         <Route exact path="/" component={Home}/>
